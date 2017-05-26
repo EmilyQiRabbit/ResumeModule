@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Emily's VueBasicResume</title>
+    <link rel="stylesheet" href="basic.css" />
+	  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+  </head>
+
+  <body>
+
+    <div id="mainBoard">
+      <board-header></board-header>
+      <board-footer></board-footer>
+    </div>
+    <div id="firstScreen">
+      <info-index v-for="icon in icons" :icon="icon" ></info-index>
+    </div>
+
+    <script src="vue.min.js"></script>
+    <script type="text/javascript">
+      // 屏宽检测
+      var testWidth = window.innerWidth;
+      if(testWidth<600){
+        alert("啊哦对不起，本页面不支持在小屏幕下观看*>.<*\n请您使用平板或电脑哦！");
+        throw("设备屏幕过小，不适合观看页面");
+      }
+
+      // 数据
+      var headInfo = {
+        name:'小琪琪',
+        university:'BUPT',
+        apply:'求职意向: web前端'
+      };
+      var firstScreenIcon = ["fa-github-alt","fa-graduation-cap","fa-star","fa-pencil-square-o","fa-list-ol","fa-bar-chart"];
+      var firstScreenTitle = ["个人信息","教育背景","曾获荣誉","个人评价","实习经历","专业技能"];
+      // components
+      // header
+      Vue.component('board-header', {
+        template: '<div class="head">\
+                    <div>{{name}}</div>\
+                    <div>{{university}} {{apply}}</div>\
+                  </div>',
+        data: function(){
+          return headInfo;
+        }
+      })
+      // First Screen Module
+      Vue.component('info-index', {
+        template: '<div class="index">\
+                    <i class="fa" v-bind:class="icon"></i>\
+                  </div>',
+        props: {
+          icon: {
+            type: String,
+            default: ''
+          }
+        },
+      })
+      // footer
+      Vue.component('board-footer', {
+        template: '<div class="foot">\
+                    <div>Made By 兔兔Emily</div>\
+                  </div>'
+      })
+
+      // 创建根实例
+      new Vue({
+        el: '#mainBoard'
+      })
+      // 创建根实例
+      new Vue({
+        el: '#firstScreen',
+        data: {
+          icons : firstScreenIcon,
+          titles : firstScreenTitle,
+        }
+      })
+    </script>
+  </body>
+
+</html>
