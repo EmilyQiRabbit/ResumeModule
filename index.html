@@ -15,7 +15,11 @@
       <board-footer></board-footer>
     </div>
     <div id="firstScreen">
-      <info-index v-for="icon in icons" :icon="icon" ></info-index>
+      <info-index v-for="(icon,index) in icons" :icon="icon" :title="titles[index]" :animation="classNames[index]"></info-index>
+    </div>
+    <div id="introduction">
+      <h3>自我介绍：</h3>
+      <intruduction-board v-for="msg in msgs" :contents="msg"></intruduction-board>
     </div>
 
     <script src="vue.min.js"></script>
@@ -27,14 +31,23 @@
         throw("设备屏幕过小，不适合观看页面");
       }
 
-      // 数据
+      // 构造相关
+      var firstScreenIcon = ["fa-github-alt","fa-graduation-cap","fa-star","fa-pencil-square-o","fa-list-ol","fa-bar-chart"];
+      var firstScreenclassNames = ["fadeInLeft0","fadeInLeft1","fadeInLeft2","fadeInLeft3","fadeInLeft4","fadeInLeft5"];
+      // 用户数据
       var headInfo = {
         name:'小琪琪',
         university:'BUPT',
         apply:'求职意向: web前端'
       };
-      var firstScreenIcon = ["fa-github-alt","fa-graduation-cap","fa-star","fa-pencil-square-o","fa-list-ol","fa-bar-chart"];
       var firstScreenTitle = ["个人信息","教育背景","曾获荣誉","个人评价","实习经历","专业技能"];
+      var introductionOnFirstPage = [
+          "......something......",
+          "......something......",
+          "......something......",
+          "......something......",
+          "我的技术博客：<a href='http://blog.csdn.net/u014328357'>http://blog.csdn.net/u014328357</a> & 我的GitHub：<a href='https://github.com/EmilyQiRabbit'>https://github.com/EmilyQiRabbit</a>。",
+          "......something......"];
       // components
       // header
       Vue.component('board-header', {
@@ -48,22 +61,58 @@
       })
       // First Screen Module
       Vue.component('info-index', {
-        template: '<div class="index">\
-                    <i class="fa" v-bind:class="icon"></i>\
+        template: '<div class="index" :class="animation">\
+                      <div>\
+                        <i class="fa" v-bind:class="icon"></i>\
+                      </div>\
+                      <div class="index-detail">\
+                        <p>{{title}}</p>\
+                      </div>\
                   </div>',
         props: {
           icon: {
             type: String,
             default: ''
+          },
+          title: {
+            type: String,
+            default: ''
+          },
+          animation: {
+            type: String,
+            default: ''
           }
         },
-      })
+        data : function(){
+          return {
+            showDetail : false
+          }
+        },
+        // life cycle function
+        mounted : function(){
+          //this.showDetail = false;
+        }
+      });
+
+      // First Screen Introduction
+      Vue.component('intruduction-board', {
+        template: '<div>\
+                    <p class="intruduction-board-p" v-html="contents"></p>\
+                   </div>',
+        props: {
+          contents: {
+            type: String,
+            default: ''
+          }
+        },
+      });
+
       // footer
       Vue.component('board-footer', {
         template: '<div class="foot">\
                     <div>Made By 兔兔Emily</div>\
                   </div>'
-      })
+      });
 
       // 创建根实例
       new Vue({
@@ -75,6 +124,14 @@
         data: {
           icons : firstScreenIcon,
           titles : firstScreenTitle,
+          classNames : firstScreenclassNames
+        }
+      })
+      // 创建根实例
+      new Vue({
+        el: '#introduction',
+        data: {
+          msgs : introductionOnFirstPage
         }
       })
     </script>
