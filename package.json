@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "koa": "2.7.0",
+    "koa-router": "7.4.0"
   },
   "devDependencies": {
     "husky": "^1.1.4",

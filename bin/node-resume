@@ -1,2 +1,11 @@
 #!/usr/bin/env node
 
+const Koa = require('koa')
+const router = require('../server/routes')
+
+const app = new Koa()
+app.use(router.routes())
+
+app.listen(3001, function () {
+  console.log('Server listening on: ', process.env.PORT || 3001)
+})
