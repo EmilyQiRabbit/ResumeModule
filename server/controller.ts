@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+// import fs from "fs";
+// import path from "path";
 import { Context } from "koa";
 
 function homePage(ctx: Context, _next: Function) {

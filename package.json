@@ -8,9 +8,10 @@
     "build": "tsc"
   },
   "dependencies": {
-    "ejs": "^2.7.1",
+    "hbs": "^4.0.4",
     "koa": "2.7.0",
     "koa-router": "7.4.0",
+    "koa-static": "^5.0.0",
     "koa-views": "^6.2.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
