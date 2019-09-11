@@ -4,19 +4,39 @@
   "private": true,
   "author": "Yuqi <LiuYQEmily@163.com>",
   "scripts": {
-    "start": "tsc && node dist/app.js",
-    "build": "tsc"
+    "start": "npm run clean:all && npm run build:client && npm run build:server && node dist/app.js",
+    "build:server": "tsc && cp -i server/layout.hbs dist",
+    "build:client": "npm run clean:client && webpack",
+    "clean:all": "rm -rf dist",
+    "clean:client": "rm -rf dist/client"
   },
   "dependencies": {
+    "autoprefixer": "^9.6.1",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^1.0.0",
+    "cssnano": "^4.0.5",
     "hbs": "^4.0.4",
     "koa": "2.7.0",
     "koa-router": "7.4.0",
     "koa-static": "^5.0.0",
     "koa-views": "^6.2.1",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "mini-css-extract-plugin": "^0.4.1",
+    "postcss": "^7.0.2",
+    "postcss-import": "^12.0.0",
+    "postcss-loader": "^3.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router": "^5.0.1",
-    "react-router-dom": "^5.0.1"
+    "react-router-dom": "^5.0.1",
+    "style-loader": "^0.22.1",
+    "ts-loader": "^5.3.3",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.1.8"
   },
   "devDependencies": {
     "@babel/core": "7.2.2",

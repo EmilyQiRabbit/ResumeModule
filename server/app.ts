@@ -7,20 +7,23 @@ import router from "./routes";
 
 const app = new Koa();
 
-const __clientDir = __dirname.replace("dist", "client");
-// 静态资源
-app.use(server(path.join(__clientDir, "/client_dist")));
-// 模版引擎
+// 客户端静态资源地址
+const __clientStaticDir = path.join(__dirname, "client");
+// 配置静态资源
+app.use(server(__clientStaticDir));
+// 配置模版引擎
 app.use(
-  views(__clientDir, {
+  views(__dirname, {
     extension: "hbs",
     map: { hbs: "handlebars" },
     options: {
-      scriptSrc: "./test.js"
+      scriptSrc: "/main.bundle.js"
     }
   })
 );
+// 路由
 app.use(router.routes());
+// 本地服务端口
 app.listen(3001, function() {
   console.log("Server listening on: ", 3001);
 });
