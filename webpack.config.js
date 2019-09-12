@@ -60,6 +60,7 @@ const LOADER_TS = [
 const loadConfig = (options = {}) => {
   const webpackConfig = {
     devtool: "source-map", // 生成 source-map 文件
+    mode: "production",
     resolve: {
       // Configure how modules are resolved.
       extensions: [".ts", ".tsx", ".mjs", ".js", ".jsx", ".json"],

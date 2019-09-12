@@ -5,8 +5,10 @@
   "author": "Yuqi <LiuYQEmily@163.com>",
   "scripts": {
     "start": "npm run clean:all && npm run build:client && npm run build:server && node dist/app.js",
+    "start:server": "npm run clean:all && npm run build:server && node dist/app.js",
     "build:server": "tsc && cp -i server/layout.hbs dist",
-    "build:client": "npm run clean:client && webpack",
+    "build:client": "webpack",
+    "build:client:dev": "npm run clean:client && webpack --watch",
     "clean:all": "rm -rf dist",
     "clean:client": "rm -rf dist/client"
   },
@@ -45,6 +47,10 @@
     "@types/node": "10.12.18",
     "@types/koa": "2.0.48",
     "@types/koa-router": "7.0.35",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-router": "^4.0.30",
+    "@types/react-router-dom": "^4.3.0",
     "husky": "^1.1.4",
     "prettier": "^1.18.2",
     "lint-staged": "^8.0.5",
