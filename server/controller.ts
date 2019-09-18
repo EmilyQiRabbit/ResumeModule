@@ -1,9 +1,21 @@
 import { Context } from "koa";
+import fs from "fs";
 
-function ResumePage(ctx: Context, _next: Function) {
+const resumePage = (ctx: Context, _next: Function) => {
   return ctx.render("./layout");
-}
+};
+// 加载静态资源文件
+const staticFile = async (ctx: Context, _next: Function) => {
+  const content = await fs.readFileSync(
+    `${__dirname}/client/${ctx.path.match(/[a-z\d]+\.bundle\.js[.map]*/)[0]}`,
+    "binary"
+  );
+  ctx.res.writeHead(200);
+  ctx.res.write(content, "binary");
+  ctx.res.end();
+};
 
 export default {
-  ResumePage
+  resumePage,
+  staticFile
 };

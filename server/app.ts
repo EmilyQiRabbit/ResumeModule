@@ -11,14 +11,14 @@ const app = new Koa();
 const __clientStaticDir = path.join(__dirname, "client");
 // 配置静态资源
 app.use(server(__clientStaticDir, { extensions: ["js"] }));
-// 重定向 .js 资源，但是这个方法感觉有点蠢...
-app.use((ctx, next) => {
-  let { path } = ctx;
-  if (path.match(/\/[a-z\d]+\/[a-z\d]+\.bundle\.js/)) {
-    ctx.redirect(path.match(/\/[a-z\d]+\.bundle\.js/)[0]);
-  }
-  return next();
-});
+// 重定向 .js 资源，但是这个重定向的方法感觉有点蠢...之后换到路由里面去了
+// app.use((ctx, next) => {
+//   let { path } = ctx;
+//   if (path.match(/\/[a-z\d]+\/[a-z\d]+\.bundle\.js/)) {
+//     ctx.redirect(path.match(/\/[a-z\d]+\.bundle\.js/)[0]);
+//   }
+//   return next();
+// });
 // 配置模版引擎
 app.use(
   views(__dirname, {
