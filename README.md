@@ -2,7 +2,7 @@
 
 ## 启动说明
 
-在控制台运行 `npm run start`
+在控制台运行 `npm run start`，访问地址 http://localhost:3001/resume/page0
 
 ## 开发说明
 
