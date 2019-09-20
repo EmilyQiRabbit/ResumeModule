@@ -15,31 +15,32 @@ const OPT_PREFIX = {
   ]
 };
 
-// const LOADER_CSS = [
-//   {
-//     loader: require('mini-css-extract-plugin').loader,
-//     options: { sourceMap: true },
-//   },
-//   { loader: require.resolve('css-loader'), options: { sourceMap: true } },
-//   {
-//     loader: require.resolve('postcss-loader'),
-//     options: {
-//       sourceMap: true,
-//       plugins: [
-//         require('postcss-import')(),
-//         require('autoprefixer')(OPT_PREFIX),
-//         require('cssnano')({
-//           preset: [
-//             'default',
-//             {
-//               discardComments: { removeAll: true },
-//             },
-//           ],
-//         }),
-//       ].filter(),
-//     },
-//   },
-// ];
+const LOADER_CSS = [
+  // {
+  //   loader: require('mini-css-extract-plugin').loader,
+  //   options: { sourceMap: true },
+  // },
+  { loader: require.resolve("style-loader") },
+  { loader: require.resolve("css-loader"), options: { sourceMap: true } },
+  {
+    loader: require.resolve("postcss-loader"),
+    options: {
+      sourceMap: true,
+      plugins: [
+        require("postcss-import")(),
+        require("autoprefixer")(OPT_PREFIX),
+        require("cssnano")({
+          preset: [
+            "default",
+            {
+              discardComments: { removeAll: true }
+            }
+          ]
+        })
+      ].filter(Boolean)
+    }
+  }
+];
 
 const LOADER_TS = [
   {
@@ -67,7 +68,9 @@ const loadConfig = (options = {}) => {
       modules: ["node_modules"],
       alias: {
         "@pages": path.resolve(__dirname, "./client/pages"),
-        "@components": path.resolve(__dirname, "./client/components")
+        "@components": path.resolve(__dirname, "./client/components"),
+        "@style": path.resolve(__dirname, "./client/style"),
+        "@images": path.resolve(__dirname, "./client/images")
       }
     },
     entry: ["./client/app.tsx"],
@@ -80,8 +83,8 @@ const loadConfig = (options = {}) => {
     module: {
       rules: [
         { test: /\.tsx?$/, use: LOADER_TS },
-        // { test: /\.css$/, use: LOADER_CSS },
-        // { test: /\.less$/, use: LOADER_CSS.concat(['less-loader']) },
+        { test: /\.css$/, use: LOADER_CSS },
+        { test: /\.less$/, use: LOADER_CSS.concat(["less-loader"]) },
         { test: /\.js$/, use: "babel-loader" },
         {
           test: /\.(png|jpg|gif)$/,
