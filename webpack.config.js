@@ -87,7 +87,7 @@ const loadConfig = (options = {}) => {
         { test: /\.less$/, use: LOADER_CSS.concat(["less-loader"]) },
         { test: /\.js$/, use: "babel-loader" },
         {
-          test: /\.(png|jpg|gif)$/,
+          test: /\.(png|jpg|gif|jpeg)$/,
           use: {
             loader: "url-loader",
             options: {
