@@ -4,13 +4,27 @@ import Avatar from "@images/avatar.jpeg";
 
 const basicIntro = [
   {
-    title: "基本信息"
+    title: "基本信息",
+    content: {
+      experience: "工作经验",
+      gender: "性别",
+      birthday: "出生日期"
+    }
   },
   {
-    title: "联系方式"
+    title: "联系方式",
+    content: {
+      phoneNumber: "号码",
+      email: "Email"
+    }
   },
   {
-    title: "技能评价"
+    title: "技能评价",
+    content: {
+      proficient: "熟练",
+      skilled: "掌握",
+      general: "了解"
+    }
   }
 ];
 const Templage0 = () => {
@@ -31,7 +45,16 @@ const Templage0 = () => {
           {basicIntro.map(info => {
             return (
               <section className="other-basic-info">
-                <title>{info.title}</title>
+                <h4>{info.title}</h4>
+                <div>
+                  {Object.keys(info.content).map(key => {
+                    return (
+                      <p>
+                        {info.content[key]}：<span contentEditable>...</span>
+                      </p>
+                    );
+                  })}
+                </div>
               </section>
             );
           })}
