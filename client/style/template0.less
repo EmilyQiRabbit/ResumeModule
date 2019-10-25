@@ -22,6 +22,29 @@ p {
   color: @font-color;
 }
 
+.triangle:before {
+  content: "";
+  height: 0;
+  width: 0;
+  font-size: 0px;
+  line-height: 0;
+  position: absolute;
+}
+
+.add-btn {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border-radius: 50%;
+  border: 0;
+  background: @basic-color;
+  color: white;
+  svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
 .wrapper {
   height: 100%;
   > * {
@@ -64,7 +87,7 @@ p {
         }
       }
       .other-basic-info {
-        h4 {
+        .title {
           background: @basic-color;
           font-weight: normal;
           color: white;
@@ -74,19 +97,12 @@ p {
           position: relative;
           left: -20px;
         }
-        h4:before {
+        .title:before {
           // 三角形
-          content: "";
-          content: "";
-          height: 0;
-          width: 0;
-          font-size: 0px;
-          line-height: 0;
-          border: 15px gray solid;
-          border-color: transparent transparent transparent gray;
-          position: absolute;
-          left: 5.5px;
-          top: 16.5px;
+          border: 14px transparent solid;
+          border-left-color: gray;
+          left: 6px;
+          top: 17px;
           transform: rotate(-45deg);
         }
         > div {
@@ -100,6 +116,43 @@ p {
     }
     .main-content {
       flex-grow: 1;
+      padding: 20px;
+      section {
+        .title {
+          width: 175px;
+          background: @basic-color;
+          color: white;
+          font-weight: normal;
+          line-height: 30px;
+          padding-left: 20px;
+          margin-bottom: 20px;
+          position: relative;
+          .affix-icon {
+            height: 0;
+            width: 0;
+            position: absolute;
+            font-size: 0;
+            line-height: 0;
+            border: 15px solid @basic-color;
+            right: -70px;
+          }
+          .affix-icon:before {
+            border: 21px solid transparent;
+            border-left-color: @basic-color;
+            transform: rotate(-45deg);
+            right: -6px;
+            top: -36px;
+          }
+        }
+        .title:before {
+          // 三角形
+          border: 21px transparent solid;
+          border-left-color: @basic-color;
+          right: -21px;
+          top: 8.5px;
+          transform: rotate(135deg);
+        }
+      }
     }
   }
 }
