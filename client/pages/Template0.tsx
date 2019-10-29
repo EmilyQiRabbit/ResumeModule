@@ -35,14 +35,15 @@ const basicIntro = [
 const EducationTable = () => {
   return (
     <>
-      <table>
+      <table className="edu-table">
         <tr>
           <td>xxxx 年 x 月 ~ xxxx 年 x 月</td>
-          <td>某某某学校</td>
-          <td>某某某专业</td>
+          <td>北京邮电大学</td>
+          <td>专业：通信工程</td>
+          <td>学历：本科/硕士</td>
         </tr>
       </table>
-      <button className="add-btn">
+      <button className="add-btn" title="添加教育背景">
         <AddIcon />
       </button>
     </>
@@ -75,7 +76,11 @@ const ExperienceList = () => {
 };
 
 const AboutContent = () => {
-  return <div contentEditable>...</div>;
+  return (
+    <div contentEditable>
+      ...我的 GitHub 主页：https://github.com/EmilyQiRabbit
+    </div>
+  );
 };
 
 const experienceIntro = [
