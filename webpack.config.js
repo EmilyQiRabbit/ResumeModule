@@ -95,6 +95,10 @@ const loadConfig = (options = {}) => {
               limit: 100000 // 100kb
             }
           }
+        },
+        {
+          test: /\.svg$/,
+          use: ["@svgr/webpack"]
         }
       ]
     },
