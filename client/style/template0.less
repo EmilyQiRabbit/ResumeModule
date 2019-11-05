@@ -8,7 +8,7 @@ button {
   outline: none;
 }
 
-@basic-color: RGBA(154, 144, 190, 1);
+@basic-color: RGBA(81, 134, 237, 0.85);
 @font-color: #41464b;
 @aside-color: RGBA(226, 226, 226, 0.6);
 
@@ -119,6 +119,8 @@ p {
       }
     }
     .main-content {
+      display: flex;
+      flex-direction: column;
       flex-grow: 1;
       padding: 20px;
       section {
@@ -166,6 +168,29 @@ p {
           width: 100%;
           td {
             text-align: left;
+          }
+        }
+        &.experience {
+          flex-grow: 1;
+          .experience-item {
+            h3 {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              color: @font-color;
+              font-size: 15px;
+              border-bottom: 1px @font-color solid;
+            }
+            p {
+              display: flex;
+              flex-direction: column;
+              color: @font-color;
+              font-size: 14px;
+              span:first-child {
+                margin: 15px 0;
+                font-weight: bold;
+              }
+            }
           }
         }
       }

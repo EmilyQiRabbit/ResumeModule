@@ -53,19 +53,19 @@ const EducationTable = () => {
 const ExperienceList = () => {
   return (
     <>
-      <section>
+      <section className="experience-item">
         <h3>
-          <span contentEditable></span>
-          <span contentEditable></span>
-          <span contentEditable></span>
+          <span contentEditable>xxxx 年 x 月 ~ xxxx 年 x 月</span>
+          <span contentEditable>xxx 公司</span>
+          <span contentEditable>Web 前端研发</span>
         </h3>
         <p contentEditable>
-          <span></span>
-          <span></span>
+          <span>(项目名称)：</span>
+          <span>...</span>
         </p>
         <p contentEditable>
-          <span></span>
-          <span></span>
+          <span>技术栈：</span>
+          <span>TypeScript React Webpack ... </span>
         </p>
       </section>
       <button className="add-btn">
@@ -136,7 +136,7 @@ const Templage0 = () => {
         <div className="main-content experience-intro">
           {experienceIntro.map(info => {
             return (
-              <section key={info.key}>
+              <section key={info.key} className={info.key}>
                 <h4 className="title triangle">
                   {info.title}
                   <span className="affix-icon triangle"></span>
