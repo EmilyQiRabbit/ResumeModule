@@ -17,7 +17,7 @@ const basicIntro = [
     title: "联系方式",
     key: "contact",
     content: {
-      phoneNumber: { title: "电话", customInfo: "18810465610" },
+      phoneNumber: { title: "电话", customInfo: "188****5610" },
       email: { title: "Email", customInfo: "LiuYQEmily@163.com" }
     }
   },
