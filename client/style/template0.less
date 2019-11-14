@@ -53,6 +53,7 @@ p {
   > * {
     width: 900px;
     margin: auto;
+    box-shadow: 5px 5px 5px 1px #666;
   }
   header {
     height: 50px;
@@ -71,7 +72,7 @@ p {
     height: calc(100vh - 50px);
     border-right: 1px RGBA(226, 226, 226, 0.9) solid;
     aside {
-      width: 225px;
+      width: 230px;
       background: @aside-color;
       display: flex;
       flex-direction: column;
@@ -111,10 +112,17 @@ p {
           transform: rotate(-45deg);
         }
         > div {
-          padding: 0 15px;
+          padding-left: 15px;
           p {
-            line-height: 2;
             font-size: 15px;
+            span:first-child {
+              line-height: 2;
+              font-weight: bold;
+            }
+            a {
+              color: @font-color;
+              cursor: pointer;
+            }
           }
         }
       }
@@ -168,7 +176,7 @@ p {
         .edu-table {
           width: 100%;
           td {
-            text-align: left;
+            text-align: center;
           }
         }
         &.experience {

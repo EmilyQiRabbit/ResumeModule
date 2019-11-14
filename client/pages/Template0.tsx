@@ -8,26 +8,29 @@ const basicIntro = [
     title: "基本信息",
     key: "basic",
     content: {
-      experience: "工作经验",
-      gender: "性别",
-      birthday: "出生日期"
+      gender: { title: "性别", customInfo: "女" },
+      age: { title: "年龄", customInfo: "27" },
+      experience: { title: "工作资历", customInfo: "1年" }
     }
   },
   {
     title: "联系方式",
     key: "contact",
     content: {
-      phoneNumber: "号码",
-      email: "Email"
+      phoneNumber: { title: "电话", customInfo: "18810465610" },
+      email: { title: "Email", customInfo: "LiuYQEmily@163.com" }
     }
   },
   {
-    title: "技能评价",
+    title: "个人简介",
     key: "evaluation",
     content: {
-      proficient: "熟练",
-      skilled: "掌握",
-      general: "了解"
+      proficient: { title: "技术评价", customInfo: "..." },
+      homepage: {
+        title: "Github",
+        customInfo: <a href="https://github.com/EmilyQiRabbit">EmilyQiRabbit</a>
+      },
+      motto: { title: "Motto", customInfo: "芝士就是力量" }
     }
   }
 ];
@@ -37,10 +40,16 @@ const EducationTable = () => {
     <>
       <table className="edu-table">
         <tr>
-          <td>xxxx 年 x 月 ~ xxxx 年 x 月</td>
-          <td>北京邮电大学</td>
-          <td>专业：通信工程</td>
-          <td>学历：本科/硕士</td>
+          <td contentEditable> 2011 年 9 月 ~ 2015 年 6 月</td>
+          <td contentEditable>北京邮电大学</td>
+          <td contentEditable>专业：通信工程</td>
+          <td contentEditable>学历：本科</td>
+        </tr>
+        <tr>
+          <td contentEditable>2015 年 9 月 ~ 2018 年 6 月</td>
+          <td contentEditable>北京邮电大学</td>
+          <td contentEditable>专业：通信工程</td>
+          <td contentEditable>学历：硕士</td>
         </tr>
       </table>
       <button className="add-btn" title="添加教育背景">
@@ -76,11 +85,7 @@ const ExperienceList = () => {
 };
 
 const AboutContent = () => {
-  return (
-    <div contentEditable>
-      ...我的 GitHub 主页：https://github.com/EmilyQiRabbit
-    </div>
-  );
+  return <div contentEditable>乐于探索，信仰知识，注重体验。</div>;
 };
 
 const experienceIntro = [
@@ -104,47 +109,52 @@ const experienceIntro = [
 const Templage0 = () => {
   return (
     <div className="wrapper">
-      <header>
-        <p>
-          求职意向：<span contentEditable>web 前端</span>
-        </p>
-      </header>
-      <div className="content">
-        <aside className="aside basic-intro">
-          <img src={Avatar} />
-          <section className="name-info">
-            <p contentEditable>Yuqi喵</p>
-            <p contentEditable>Web前端攻城狮</p>
-          </section>
-          {basicIntro.map(info => {
-            return (
-              <section className="other-basic-info" key={info.key}>
-                <h4 className="title triangle">{info.title}</h4>
-                <div>
-                  {Object.keys(info.content).map(key => {
-                    return (
-                      <p>
-                        {info.content[key]}：<span contentEditable>...</span>
-                      </p>
-                    );
-                  })}
-                </div>
-              </section>
-            );
-          })}
-        </aside>
-        <div className="main-content experience-intro">
-          {experienceIntro.map(info => {
-            return (
-              <section key={info.key} className={info.key}>
-                <h4 className="title triangle">
-                  {info.title}
-                  <span className="affix-icon triangle"></span>
-                </h4>
-                {info.content}
-              </section>
-            );
-          })}
+      <div>
+        <header>
+          <p>
+            求职意向：<span contentEditable>web 前端</span>
+          </p>
+        </header>
+        <div className="content">
+          <aside className="aside basic-intro">
+            <img src={Avatar} />
+            <section className="name-info">
+              <p contentEditable>Yuqi喵</p>
+              <p contentEditable>Web前端攻城狮</p>
+            </section>
+            {basicIntro.map(info => {
+              return (
+                <section className="other-basic-info" key={info.key}>
+                  <h4 className="title triangle">{info.title}</h4>
+                  <div>
+                    {Object.keys(info.content).map(key => {
+                      return (
+                        <p>
+                          <span>{info.content[key].title}：</span>
+                          <span contentEditable>
+                            {info.content[key].customInfo}
+                          </span>
+                        </p>
+                      );
+                    })}
+                  </div>
+                </section>
+              );
+            })}
+          </aside>
+          <div className="main-content experience-intro">
+            {experienceIntro.map(info => {
+              return (
+                <section key={info.key} className={info.key}>
+                  <h4 className="title triangle">
+                    {info.title}
+                    <span className="affix-icon triangle"></span>
+                  </h4>
+                  {info.content}
+                </section>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
