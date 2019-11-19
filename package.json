@@ -18,6 +18,8 @@
     "css-loader": "^1.0.0",
     "cssnano": "^4.0.5",
     "hbs": "^4.0.4",
+    "html2canvas": "^1.0.0-rc.5",
+    "jspdf": "^1.5.3",
     "koa": "2.7.0",
     "koa-router": "7.4.0",
     "koa-static": "^5.0.0",

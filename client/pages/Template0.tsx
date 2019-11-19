@@ -2,6 +2,8 @@ import React from "react";
 import "@style/template0.less";
 import Avatar from "@images/avatar.jpeg";
 import AddIcon from "@images/add-icon.svg";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 const basicIntro = [
   {
@@ -109,13 +111,15 @@ const experienceIntro = [
 const Templage0 = () => {
   return (
     <div className="wrapper">
-      <div>
+      <div id="pdf-canvas-target">
+        {/* header */}
         <header>
           <p>
             求职意向：<span contentEditable>web 前端</span>
           </p>
         </header>
         <div className="content">
+          {/* 左边栏 */}
           <aside className="aside basic-intro">
             <img src={Avatar} />
             <section className="name-info">
@@ -142,6 +146,7 @@ const Templage0 = () => {
               );
             })}
           </aside>
+          {/* 主要内容 */}
           <div className="main-content experience-intro">
             {experienceIntro.map(info => {
               return (
@@ -162,3 +167,19 @@ const Templage0 = () => {
 };
 
 export default Templage0;
+
+document.onkeydown = e => {
+  // ctrl + p
+  if (e.ctrlKey && e.keyCode === 80) {
+    try {
+      html2canvas(document.querySelector("#pdf-canvas-target")).then(canvas => {
+        const imgData = canvas.toDataURL();
+        const doc = jsPDF("p", "mm", "a4");
+        doc.addImage(imgData, "png", 0, 0, 210, 297);
+        doc.save("resume0.pdf");
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+};
