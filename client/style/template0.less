@@ -15,7 +15,7 @@ button {
 html,
 body,
 #root {
-  height: 100%;
+  height: 1040px;
 }
 
 p {
@@ -51,8 +51,9 @@ p {
 .wrapper {
   height: 100%;
   > * {
-    width: 900px;
-    margin: auto;
+    width: 735.35px;
+    height: 100%;
+    margin: 20px auto;
     box-shadow: 5px 5px 5px 1px #666;
   }
   header {
@@ -69,7 +70,7 @@ p {
   .content {
     display: flex;
     flex-direction: row;
-    height: calc(100vh - 50px);
+    height: calc(100% - 50px);
     border-right: 1px RGBA(226, 226, 226, 0.9) solid;
     aside {
       width: 230px;
@@ -102,19 +103,20 @@ p {
           position: relative;
           left: -20px;
           letter-spacing: 1px;
+          font-size: 14px;
         }
         .title:before {
           // 三角形
           border: 14px transparent solid;
           border-left-color: gray;
           left: 6px;
-          top: 17px;
+          top: 14px;
           transform: rotate(-45deg);
         }
         > div {
           padding-left: 15px;
           p {
-            font-size: 15px;
+            font-size: 14px;
             span:first-child {
               line-height: 2;
               font-weight: bold;
@@ -133,41 +135,42 @@ p {
       flex-grow: 1;
       padding: 20px;
       section {
-        font-size: 15px;
+        font-size: 14px;
         color: @font-color;
         .title {
           width: 175px;
           background: @basic-color;
           color: white;
           font-weight: normal;
-          line-height: 30px;
+          line-height: 28px;
           padding-left: 20px;
           margin-bottom: 20px;
           position: relative;
           letter-spacing: 1px;
+          font-size: 14px;
           .affix-icon {
             height: 0;
             width: 0;
             position: absolute;
             font-size: 0;
             line-height: 0;
-            border: 15px solid @basic-color;
+            border: 14px solid @basic-color;
             right: -70px;
           }
           .affix-icon:before {
-            border: 21px solid transparent;
+            border: 20px solid transparent;
             border-left-color: @basic-color;
             transform: rotate(-45deg);
             right: -6px;
-            top: -36px;
+            top: -34px;
           }
         }
         .title:before {
           // 三角形
-          border: 21px transparent solid;
+          border: 20px transparent solid;
           border-left-color: @basic-color;
-          right: -21px;
-          top: 8.5px;
+          right: -20px;
+          top: 8px;
           transform: rotate(135deg);
         }
         .add-btn {
@@ -187,7 +190,7 @@ p {
               flex-direction: row;
               justify-content: space-between;
               color: @font-color;
-              font-size: 15px;
+              font-size: 14px;
               border-bottom: 1px @font-color solid;
             }
             p {

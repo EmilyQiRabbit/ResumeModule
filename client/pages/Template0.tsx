@@ -2,8 +2,8 @@ import React from "react";
 import "@style/template0.less";
 import Avatar from "@images/avatar.jpeg";
 import AddIcon from "@images/add-icon.svg";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+// import jsPDF from "jspdf";
+// import html2canvas from "html2canvas";
 
 const basicIntro = [
   {
@@ -12,7 +12,7 @@ const basicIntro = [
     content: {
       gender: { title: "性别", customInfo: "女" },
       age: { title: "年龄", customInfo: "27" },
-      experience: { title: "工作资历", customInfo: "1年" }
+      experience: { title: "工作资历", customInfo: "1 年" }
     }
   },
   {
@@ -20,14 +20,19 @@ const basicIntro = [
     key: "contact",
     content: {
       phoneNumber: { title: "电话", customInfo: "188****5610" },
-      email: { title: "Email", customInfo: "LiuYQEmily@163.com" }
+      email: { title: "Email", customInfo: "LiuYQEmily@163.com" },
+      wechat: { title: "微信号", customInfo: "188****5610" }
     }
   },
   {
     title: "个人简介",
     key: "evaluation",
     content: {
-      proficient: { title: "技术评价", customInfo: "..." },
+      proficient: {
+        title: "技术评价",
+        customInfo:
+          "ES6，TS，jQuery，React，Redux，npm，Webpack，NodeJS，Express，KOA，Git"
+      },
       homepage: {
         title: "Github",
         customInfo: <a href="https://github.com/EmilyQiRabbit">EmilyQiRabbit</a>
@@ -43,15 +48,13 @@ const EducationTable = () => {
       <table className="edu-table">
         <tr>
           <td contentEditable> 2011 年 9 月 ~ 2015 年 6 月</td>
-          <td contentEditable>北京邮电大学</td>
-          <td contentEditable>专业：通信工程</td>
-          <td contentEditable>学历：本科</td>
+          <td contentEditable>北京邮电大学 - 通信工程</td>
+          <td contentEditable>本科</td>
         </tr>
         <tr>
           <td contentEditable>2015 年 9 月 ~ 2018 年 6 月</td>
-          <td contentEditable>北京邮电大学</td>
-          <td contentEditable>专业：通信工程</td>
-          <td contentEditable>学历：硕士</td>
+          <td contentEditable>北京邮电大学 - 通信工程</td>
+          <td contentEditable>硕士</td>
         </tr>
       </table>
       <button className="add-btn" title="添加教育背景">
@@ -168,18 +171,20 @@ const Templage0 = () => {
 
 export default Templage0;
 
-document.onkeydown = e => {
-  // ctrl + p
-  if (e.ctrlKey && e.keyCode === 80) {
-    try {
-      html2canvas(document.querySelector("#pdf-canvas-target")).then(canvas => {
-        const imgData = canvas.toDataURL();
-        const doc = jsPDF("p", "mm", "a4");
-        doc.addImage(imgData, "png", 0, 0, 210, 297);
-        doc.save("resume0.pdf");
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  }
-};
+// 效果并不好，放弃
+// 原因：有很多 css 特性，html2canvas 并不支持
+// document.onkeydown = e => {
+//   // ctrl + p
+//   if (e.ctrlKey && e.keyCode === 80) {
+//     try {
+//       html2canvas(document.querySelector("#pdf-canvas-target")).then(canvas => {
+//         const imgData = canvas.toDataURL();
+//         const doc = jsPDF("p", "mm", "a4");
+//         doc.addImage(imgData, "png", 0, 0, 210, 297);
+//         doc.save("resume0.pdf");
+//       });
+//     } catch (e) {
+//       console.log(e);
+//     }
+//   }
+// };
