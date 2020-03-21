@@ -14,13 +14,10 @@ const Template0: any = Loadable({
   }
 });
 
-const World = () => <div>World</div>;
-
 const App = () => {
   return (
     <BrowserRouter>
-      <Route path="/resume/page0" component={Template0} />
-      <Route path="/resume/world" component={World} />
+      <Route path="/resume" component={Template0} />
     </BrowserRouter>
   );
 };

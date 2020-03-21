@@ -34,7 +34,7 @@ app.use(router.routes());
 // 本地服务端口
 app.listen(3001, function() {
   console.log("Server listening on: ", 3001);
-  console.log("请访问：http://localhost:3001/resume/page0");
+  console.log("请使用浏览器访问：http://localhost:3001/resume");
 });
 
 export default app;
