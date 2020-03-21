@@ -1,7 +1,7 @@
 import React from "react";
 import "@style/template0.less";
 import Avatar from "@images/avatar.jpeg";
-import AddIcon from "@images/add-icon.svg";
+// import AddIcon from "@images/add-icon.svg";
 // import jsPDF from "jspdf";
 // import html2canvas from "html2canvas";
 
