@@ -8,7 +8,7 @@ const resumePage = (ctx: Context, _next: Function) => {
 const staticFile = async (ctx: Context, _next: Function) => {
   const content = await fs.readFileSync(
     `${process.cwd()}/dist/client/${
-      ctx.path.match(/[a-z\d~]+\.bundle\.js[.map]*/)[0]
+      ctx.path.match(/[a-zA-Z\d~]+\.bundle\.js[.map]*/)[0]
     }`,
     "binary"
   );
