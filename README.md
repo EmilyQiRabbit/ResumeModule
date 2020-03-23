@@ -13,11 +13,7 @@
 
 ## 开发说明
 
-运行 `npm run start:server`
-
-在新的控制台运行 `npm run build:client:dev`
-
-这样修改页面可以不必重新启动项目。
+运行 `npm run start:dev`，修改代码可不必重新启动项目。
 
 ### 直接启动
 
