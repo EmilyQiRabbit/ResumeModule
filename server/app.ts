@@ -1,17 +1,8 @@
 import Koa from "koa";
 import views from "koa-views";
-// import server from "koa-static";
-// import fs from "fs";
-// import path from "path";
 import router from "./routes";
 
 const app = new Koa();
-
-// 静态资源使用路由加载，这里不用了
-// 客户端静态资源地址
-// const __clientStaticDir = path.join(__dirname, "client");
-// 配置静态资源
-// app.use(server(__clientStaticDir, { extensions: ["js"] }));
 
 // 配置模版引擎
 app.use(
