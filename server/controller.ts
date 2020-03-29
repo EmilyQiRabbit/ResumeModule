@@ -22,7 +22,7 @@ export const staticFile = async (ctx: Context, _next: Function) => {
 export const print = async (ctx: Context) => {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
-  await page.goto("https://blog.risingstack.com", {
+  await page.goto("https://localhost/resume", {
     waitUntil: "networkidle0"
   });
   const pdf = await page.pdf({ format: "A4" });
