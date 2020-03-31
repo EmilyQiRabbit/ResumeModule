@@ -8,6 +8,7 @@
   - koa-views 配置模版引擎
   - koa-router 配置路由
   - localhost 已配置为 https 服务
+  - 支持 ssr
 
 - 前端部分基于 React + ts，webpack 编译后可被 Node 服务访问
 
@@ -76,4 +77,4 @@ const server = https.createServer(certOptions, app.callback()).listen(443);
 
 ### 2. 直接启动
 
-在控制台运行 `npm run start`，访问地址 http://localhost/resume/page0
+在控制台运行 `npm run start`，访问地址 https://localhost/resume
