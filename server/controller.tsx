@@ -1,6 +1,9 @@
 import { Context } from "koa";
 import fs from "fs";
 import puppeteer from "puppeteer";
+import React from "react";
+import { renderToString } from "react-dom/server";
+import { Layout, htmlTemplate } from "./ssrLayout";
 
 export const resumePage = (ctx: Context, _next: Function) => {
   return ctx.render("./layout");
@@ -29,4 +32,12 @@ export const print = async (ctx: Context) => {
   await browser.close();
   ctx.set({ "Content-Type": "application/pdf", "Content-Length": pdf.length });
   ctx.body = pdf;
+};
+
+export const resumePageSSR = (ctx: Context, _next: Function) => {
+  const jsx = <Layout />;
+  const reactDom = renderToString(jsx);
+
+  ctx.res.writeHead(200, { "Content-Type": "text/html" });
+  ctx.res.end(htmlTemplate(reactDom));
 };
