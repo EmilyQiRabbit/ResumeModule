@@ -17,7 +17,7 @@ const Template0: any = Loadable({
 const App = () => {
   return (
     <BrowserRouter>
-      <Route path="/resume" component={Template0} />
+      <Route path="/resume/0" component={Template0} />
     </BrowserRouter>
   );
 };

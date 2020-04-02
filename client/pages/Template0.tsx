@@ -2,7 +2,6 @@ import React from "react";
 import "@style/template0.less";
 import Avatar from "@images/avatar.jpeg";
 // import AddIcon from "@images/add-icon.svg";
-// import jsPDF from "jspdf";
 
 const basicIntro = [
   {
@@ -215,21 +214,3 @@ const Templage0 = () => {
 };
 
 export default Templage0;
-
-// 效果并不好，放弃
-// 原因：有很多 css 特性，html2canvas 并不支持
-// document.onkeydown = e => {
-//   // ctrl + p
-//   if (e.ctrlKey && e.keyCode === 80) {
-//     try {
-//       html2canvas(document.querySelector("#pdf-canvas-target")).then(canvas => {
-//         const imgData = canvas.toDataURL();
-//         const doc = jsPDF("p", "mm", "a4");
-//         doc.addImage(imgData, "png", 0, 0, 210, 297);
-//         doc.save("resume0.pdf");
-//       });
-//     } catch (e) {
-//       console.log(e);
-//     }
-//   }
-// };
