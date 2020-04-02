@@ -108,6 +108,7 @@ const loadConfig = (options = {}) => {
           cache: false,
           parallel: true,
           sourceMap: true,
+          exclude: /latextemplate/,
           uglifyOptions: {
             compress: {
               drop_console: false,
