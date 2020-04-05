@@ -1,5 +1,6 @@
 import React from "react";
 import * as latexJS from "latex.js";
+import "@style/latex.less";
 
 export default class LatexTemplate extends React.Component<any, any> {
   state = {
@@ -16,11 +17,20 @@ export default class LatexTemplate extends React.Component<any, any> {
       \\usepackage{calc,pict2e,picture}
       \\usepackage{textgreek,textcomp,gensymb,stix}
 
-      \\title{\\LaTeX.js Showcase}
+      \\setcounter{secnumdepth}{2}
+
+      \\title{简历模版}
+      \\author{Yuqi}
+      \\date{2019 -- 2020}
+  
       \\begin{document}
+
+      \\begin{center}
+      \\maketitle
+      \\end{center}
+
       \\begin{abstract}
-      This document will show most of the features of \\LaTeX.js while at the same time being a gentle introduction to \\LaTeX.
-      In the appendix, the API as well as the format of custom macro definitions in JavaScript will be explained.
+      123
       \\end{abstract}
 
       \\begin{multicols}{2}[\\subsection{Multicolumns}]
@@ -45,6 +55,12 @@ export default class LatexTemplate extends React.Component<any, any> {
     const doc = latex
       .parse(latexContent, { generator: generator })
       .domFragment();
+    // style
+    document.body.appendChild(
+      generator.stylesAndScripts(
+        "https://cdn.jsdelivr.net/npm/latex.js@0.11.1/dist/"
+      )
+    );
     this.setState({
       htmlContent: doc.firstElementChild.outerHTML
     });
@@ -52,7 +68,10 @@ export default class LatexTemplate extends React.Component<any, any> {
 
   render() {
     return (
-      <div dangerouslySetInnerHTML={{ __html: this.state.htmlContent }}></div>
+      <div
+        className="latex-container"
+        dangerouslySetInnerHTML={{ __html: this.state.htmlContent }}
+      ></div>
     );
   }
 }
