@@ -11,6 +11,7 @@
   - 支持 ssr
 
 - 前端部分基于 React + ts，webpack 编译后可被 Node 服务访问
+  - 增加 latex 模版支持
 
 ## 开发说明
 
