@@ -34,6 +34,8 @@ export const print = async (ctx: Context) => {
   ctx.body = pdf;
 };
 
+// 参考教程：https://juejin.im/post/5af443856fb9a07abc29f1eb 以及
+// https://www.freecodecamp.org/news/demystifying-reacts-server-side-render-de335d408fe4/
 export const resumePageSSR = (ctx: Context, _next: Function) => {
   const jsx = <Layout />;
   const reactDom = renderToString(jsx);
