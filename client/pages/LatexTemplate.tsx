@@ -2,6 +2,7 @@ import React from "react";
 import * as latexJS from "latex.js";
 import "@style/latex.less";
 
+// online playground: https://latex.js.org/playground.html
 export default class LatexTemplate extends React.Component<any, any> {
   state = {
     htmlContent: ""
@@ -16,39 +17,36 @@ export default class LatexTemplate extends React.Component<any, any> {
       \\usepackage{hyperref}
       \\usepackage{calc,pict2e,picture}
       \\usepackage{textgreek,textcomp,gensymb,stix}
+      \\usepackage[colorlinks,linkcolor=blue]{hyperref}
 
       \\setcounter{secnumdepth}{2}
 
-      \\title{简历模版}
-      \\author{Yuqi}
-      \\date{2019 -- 2020}
+      \\title{HELLO LATEX，简历模版}
+      \\author{made with $\\varheartsuit$ by Yuqi}
+      \\date{\\today}
   
       \\begin{document}
 
-      \\begin{center}
       \\maketitle
-      \\end{center}
 
-      \\begin{abstract}
-      123
-      \\end{abstract}
+      \\section*{Personal Info} 姓名：Yuqi \\ \\ \\ \\ \\ 性别：女 \\ \\ \\ \\ \\ 年龄：27 \\ \\ \\ \\ \\ 
+      联系方式：188****6666 \\ \\ \\ \\ \\ 邮箱：Liu**喵喵喵@163.com \\ \\ \\ \\ \\ 
+      Github 主页：\\href{https://github.com/EmilyQiRabbit}{EmilyQiRabbit}
 
-      \\begin{multicols}{2}[\\subsection{Multicolumns}]
-
-      The multi-column layout, using the \\texttt{multicols} environment, allows easy
-      definition of multiple columns of text---just like in newspapers. The first
-      and mandatoriy argument specifies the number of columns the text should be divided into.
-
-      It is often convenient to spread some text over all columns, just before the multicolumn
-      output. In \\LaTeX, this was needed to prevent any page break in between. To achieve this,
-      the \\texttt{multicols} environment has an optional second argument which can be used for
-      this purpose.
-
-      For instance, this text you are reading now was started with the argument
-      \\texttt{\\textbackslash subsection\\{Multicolumns\\}}.
-
+      \\begin{multicols}{1}[\\section*{Education}]
+      \\begin{itemize}
+      \\item 2011.09 - 2015.06 本科 北京邮电大学 - 信息与通信工程学院 - 通信工程
+      \\item 2015.09 - 2018.06 硕士 北京邮电大学 - 信息与通信工程学院 - 通信工程
+      \\end{itemize}
       \\end{multicols}
-      HELLO!LATEX
+
+      \\section*{Experience}
+      \\subsection{工作经历1}
+      \\subsection{工作经历2}
+      \\subsection{工作经历3}
+      \\subsection{工作经历4}
+      \\subsection{工作经历5}
+      
       \\end{document}`;
     console.log(latexContent);
     const generator = new latex.HtmlGenerator({ hyphenate: false });
