@@ -23,15 +23,27 @@ export const staticFile = async (ctx: Context, _next: Function) => {
 
 // 此种 print 方式需要将本地服务改造为 https 链接。
 export const print = async (ctx: Context) => {
-  const browser = await puppeteer.launch({ headless: true });
-  const page = await browser.newPage();
-  await page.goto("https://localhost/resume", {
-    waitUntil: "networkidle0"
-  });
-  const pdf = await page.pdf({ format: "A4" });
-  await browser.close();
-  ctx.set({ "Content-Type": "application/pdf", "Content-Length": pdf.length });
-  ctx.body = pdf;
+  const { search } = ctx.request;
+  if (/page/.test(search) && search.substr(1).split("=")[1]) {
+    const browser = await puppeteer.launch({ headless: true });
+    const page = await browser.newPage();
+    await page.goto(
+      `https://localhost/resume/${search.substr(1).split("=")[1]}`,
+      {
+        waitUntil: "networkidle2"
+      }
+    );
+    const pdf = await page.pdf({ format: "A4", printBackground: true });
+    await browser.close();
+    ctx.set({
+      "Content-Type": "application/pdf",
+      "Content-Length": pdf.length
+    });
+    ctx.body = pdf;
+  } else {
+    ctx.response.status = 404;
+    ctx.response.body = "Page Not Found";
+  }
 };
 
 // 参考教程：https://juejin.im/post/5af443856fb9a07abc29f1eb 以及

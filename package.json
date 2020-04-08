@@ -62,7 +62,7 @@
     "prettier": "^1.18.2",
     "ts-node": "^8.5.4",
     "ts-node-dev": "^1.0.0-pre.28",
-    "typescript": "3.2.2",
+    "typescript": "^3.2.2",
     "webpack-bundle-analyzer": "^3.6.1"
   },
   "husky": {
