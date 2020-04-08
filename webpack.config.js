@@ -1,6 +1,8 @@
 const path = require("path");
 const webpack = require("webpack");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 const OPT_PREFIX = {
   Browserslist: [
@@ -126,18 +128,26 @@ const loadConfig = (options = {}) => {
         })
       ],
       splitChunks: {
-        chunks: "async",
+        chunks: "all",
         minSize: 30000,
         maxSize: 0,
-        minChunks: 1,
+        minChunks: 2,
         maxAsyncRequests: 6,
         maxInitialRequests: 4,
         automaticNameDelimiter: "~",
         automaticNameMaxLength: 30,
         cacheGroups: {
-          defaultVendors: {
+          vendors: {
             test: /[\\/]node_modules[\\/]/,
             priority: -10
+          },
+          reactBase: {
+            test: module => {
+              return /react|redux/.test(module.context);
+            }, // 直接使用 test 来做路径匹配，抽离react相关代码
+            chunks: "initial",
+            name: "reactBase",
+            priority: 10
           },
           default: {
             minChunks: 2,
@@ -164,7 +174,8 @@ const loadConfig = (options = {}) => {
             configFile: ".eslintrc.js"
           }
         }
-      })
+      }),
+      new BundleAnalyzerPlugin()
     ]
   };
   return webpackConfig;
