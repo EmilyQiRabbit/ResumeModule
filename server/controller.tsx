@@ -22,6 +22,7 @@ export const staticFile = async (ctx: Context, _next: Function) => {
 };
 
 // 此种 print 方式需要将本地服务改造为 https 链接。
+// 目前可用的链接为：/print?page=latex or /print?page=0
 export const print = async (ctx: Context) => {
   const { search } = ctx.request;
   if (/page/.test(search) && search.substr(1).split("=")[1]) {

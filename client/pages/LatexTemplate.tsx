@@ -29,10 +29,11 @@ export default class LatexTemplate extends React.Component<any, any> {
 
       \\maketitle
 
-      \\section*{Personal Info} 姓名：Yuqi \\ \\ \\ \\ \\ 性别：女 \\ \\ \\ \\ \\ 年龄：27 \\ \\ \\ \\ \\ 
-      联系方式：188****6666 \\ \\ \\ \\ \\ 邮箱：Liu**喵喵喵@163.com \\ \\ \\ \\ \\ 
-      Github 主页：\\href{https://github.com/EmilyQiRabbit}{EmilyQiRabbit}
-
+      \\section*{Personal Info} 
+      姓名：Yuqi \\ \\ \\ \\ \\ 星座：巨蟹 ♋️ \\ \\ \\ \\ \\ 年龄：27 \\ \\ \\ \\ \\ 联系方式：188****6666 \\\\
+      \\\\
+      邮箱：Liu**喵喵喵@163.com \\ \\ \\ \\ \\ Github 主页：\\href{https://github.com/EmilyQiRabbit}{EmilyQiRabbit}
+      
       \\begin{multicols}{1}[\\section*{Education}]
       \\begin{itemize}
       \\item 2011.09 - 2015.06 本科 北京邮电大学 - 信息与通信工程学院 - 通信工程
