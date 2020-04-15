@@ -4,6 +4,11 @@ import puppeteer from "puppeteer";
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { Layout, htmlTemplate } from "./ssrLayout";
+import { StaticRouter } from "react-router-dom";
+
+// 参考教程：https://juejin.im/post/5af443856fb9a07abc29f1eb 以及
+// https://www.freecodecamp.org/news/demystifying-reacts-server-side-render-de335d408fe4/
+// https://juejin.im/post/5b0269c2518825428b3916f9
 
 export const resumePage = (ctx: Context, _next: Function) => {
   return ctx.render("./layout");
@@ -47,10 +52,13 @@ export const print = async (ctx: Context) => {
   }
 };
 
-// 参考教程：https://juejin.im/post/5af443856fb9a07abc29f1eb 以及
-// https://www.freecodecamp.org/news/demystifying-reacts-server-side-render-de335d408fe4/
 export const resumePageSSR = (ctx: Context, _next: Function) => {
-  const jsx = <Layout />;
+  console.log("resumePageSSR");
+  const jsx = (
+    <StaticRouter location={ctx.req.url} basename="/ssr-resume">
+      <Layout />
+    </StaticRouter>
+  );
   const reactDom = renderToString(jsx);
 
   ctx.res.writeHead(200, { "Content-Type": "text/html" });
