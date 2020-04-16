@@ -8,7 +8,7 @@
   - koa-views 配置模版引擎
   - koa-router 配置路由
   - localhost 已配置为 https 服务
-  - 支持 ssr
+  - 支持 ssr + spa 混合模式（搭建 ing）
 
 - 前端部分基于 React + ts，webpack 编译后可被 Node 服务访问
   - 增加 latex 模版支持
