@@ -16,5 +16,5 @@
     "lib": ["es2015", "dom"],
     "noEmitOnError": true
   },
-  "include": ["server/*"]
+  "include": ["server/*", "server/ssr/index.tsx"]
 }

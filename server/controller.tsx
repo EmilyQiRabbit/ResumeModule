@@ -1,14 +1,7 @@
 import { Context } from "koa";
 import fs from "fs";
 import puppeteer from "puppeteer";
-import React from "react";
-import { renderToString } from "react-dom/server";
-import { Layout, htmlTemplate } from "./ssrLayout";
-import { StaticRouter } from "react-router-dom";
-
-// 参考教程：https://juejin.im/post/5af443856fb9a07abc29f1eb 以及
-// https://www.freecodecamp.org/news/demystifying-reacts-server-side-render-de335d408fe4/
-// https://juejin.im/post/5b0269c2518825428b3916f9
+import { htmlTemplate } from "./utils";
 
 export const resumePage = (ctx: Context, _next: Function) => {
   return ctx.render("./layout");
@@ -52,15 +45,19 @@ export const print = async (ctx: Context) => {
   }
 };
 
+// ssr 参考教程：
+// 1. https://juejin.im/post/5af443856fb9a07abc29f1eb 以及
+// 2. https://www.freecodecamp.org/news/demystifying-reacts-server-side-render-de335d408fe4/
+// 3. https://juejin.im/post/5b0269c2518825428b3916f9
+import { SSR } from "./ssr";
+// preload all components on server side, 服务端没有动态加载各个组件，提前先加载好
+SSR.preloadAll();
+const s = new SSR();
+
 export const resumePageSSR = (ctx: Context, _next: Function) => {
   console.log("resumePageSSR");
-  const jsx = (
-    <StaticRouter location={ctx.req.url} basename="/ssr-resume">
-      <Layout />
-    </StaticRouter>
-  );
-  const reactDom = renderToString(jsx);
+  const rendered = s.render(ctx.req.url, {});
 
   ctx.res.writeHead(200, { "Content-Type": "text/html" });
-  ctx.res.end(htmlTemplate(reactDom));
+  ctx.res.end(htmlTemplate(rendered));
 };
