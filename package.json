@@ -5,7 +5,7 @@
   "author": "Yuqi <LiuYQEmily@163.com>",
   "scripts": {
     "start": "npm run clean:all && npm run build:client && npm run build:server && node dist/app.js",
-    "start:dev": "run-p start:client:dev start:server:dev",
+    "start:dev": "npx webpack --config ./server/ssr/webpack.ssr.js && run-p start:client:dev start:server:dev",
     "start:server:dev": "rm -rf .ts-node* && ts-node-dev ./server/app.ts",
     "start:client:dev": "npm run clean:client && webpack --watch",
     "build:server": "tsc && cp -i server/layout.hbs dist",

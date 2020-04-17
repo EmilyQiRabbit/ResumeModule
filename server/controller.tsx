@@ -2,18 +2,30 @@ import { Context } from "koa";
 import fs from "fs";
 import puppeteer from "puppeteer";
 import { htmlTemplate } from "./utils";
+import { ServerRouter } from "./ssr/server";
 
 export const resumePage = (ctx: Context, _next: Function) => {
   return ctx.render("./layout");
 };
 // 加载静态资源文件
 export const staticFile = async (ctx: Context, _next: Function) => {
-  const content = await fs.readFileSync(
-    `${process.cwd()}/dist/client/${
-      ctx.path.match(/[a-zA-Z\d~]+\.bundle\.js[.map]*/)[0]
-    }`,
-    "binary"
-  );
+  let content;
+  if (/ssr/.test(ctx.path)) {
+    content = await fs.readFileSync(
+      `${process.cwd()}/server/ssr/build/node/${ctx.path.replace(
+        "/ssr-resume/",
+        ""
+      )}`,
+      "binary"
+    );
+  } else {
+    content = await fs.readFileSync(
+      `${process.cwd()}/dist/client/${
+        ctx.path.match(/[a-zA-Z\d~]+\.bundle\.js[.map]*/)[0]
+      }`,
+      "binary"
+    );
+  }
   ctx.res.writeHead(200);
   ctx.res.write(content, "binary");
   ctx.res.end();
@@ -49,11 +61,8 @@ export const print = async (ctx: Context) => {
 // 1. https://juejin.im/post/5af443856fb9a07abc29f1eb 以及
 // 2. https://www.freecodecamp.org/news/demystifying-reacts-server-side-render-de335d408fe4/
 // 3. https://juejin.im/post/5b0269c2518825428b3916f9
-import { SSR } from "./ssr";
-// preload all components on server side, 服务端没有动态加载各个组件，提前先加载好
-SSR.preloadAll();
-const s = new SSR();
 
+const s = new ServerRouter();
 export const resumePageSSR = (ctx: Context, _next: Function) => {
   console.log("resumePageSSR");
   const rendered = s.render(ctx.req.url, {});

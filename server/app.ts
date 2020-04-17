@@ -1,6 +1,7 @@
 import Koa from "koa";
 import views from "koa-views";
 import router from "./routes";
+import { ServerRouter } from "./ssr/server";
 
 import fs from "fs";
 import https from "https";
@@ -20,17 +21,13 @@ app.use(
 );
 // 路由
 app.use(router.routes());
-// 本地服务端口
-// app.listen(3001, function() {
-//   console.log("Server listening on: ", 3001);
-//   console.log("请使用浏览器访问：http://localhost:3001/resume");
-// });
 
 const certOptions = {
   key: fs.readFileSync(path.resolve("./.certification/server.key")),
   cert: fs.readFileSync(path.resolve("./.certification/server.crt"))
 };
 
-const server = https.createServer(certOptions, app.callback()).listen(443);
-
-export default server;
+// preload all components on server side, 服务端没有动态加载各个组件，提前先加载好
+ServerRouter.preloadAll().then(() => {
+  https.createServer(certOptions, app.callback()).listen(443);
+});

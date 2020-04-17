@@ -1,8 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const OPT_PREFIX = {
   Browserslist: [
@@ -174,8 +173,8 @@ const loadConfig = (options = {}) => {
             configFile: ".eslintrc.js"
           }
         }
-      }),
-      new BundleAnalyzerPlugin()
+      })
+      // new BundleAnalyzerPlugin()
     ]
   };
   return webpackConfig;
