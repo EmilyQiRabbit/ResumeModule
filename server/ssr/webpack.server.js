@@ -31,7 +31,7 @@ const loadConfig = (_options = {}) => {
     entry: ["./server/ssr/components/Router.tsx"],
     output: {
       path: path.join(__dirname, "./build/node"),
-      filename: "ssrClient.js",
+      filename: "ssrNode.js",
       libraryTarget: "commonjs2"
     },
     externals: [nodeExternals()],

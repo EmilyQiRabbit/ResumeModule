@@ -57,10 +57,13 @@ export const print = async (ctx: Context) => {
   }
 };
 
-// ssr 参考教程：
-// 1. https://juejin.im/post/5af443856fb9a07abc29f1eb 以及
-// 2. https://www.freecodecamp.org/news/demystifying-reacts-server-side-render-de335d408fe4/
-// 3. https://juejin.im/post/5b0269c2518825428b3916f9
+/**
+ * SSR 参考教程：
+ * 1. https://juejin.im/post/5af443856fb9a07abc29f1eb 以及
+ * 2. https://www.freecodecamp.org/news/demystifying-reacts-server-side-render-de335d408fe4/
+ * 3. https://juejin.im/post/5b0269c2518825428b3916f9
+ * 4. https://juejin.im/post/5c627d9b6fb9a049f23d3e38#heading-13
+ */
 
 const s = new ServerRouter();
 export const resumePageSSR = (ctx: Context, _next: Function) => {
