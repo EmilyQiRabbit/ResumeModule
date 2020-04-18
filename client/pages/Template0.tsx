@@ -17,8 +17,8 @@ const basicIntro = [
     title: "联系方式",
     key: "contact",
     content: {
-      phoneNumber: { title: "📲 电话", customInfo: "188****5610" },
-      email: { title: "📮 邮箱", customInfo: "L*****y@163.com" }
+      phoneNumber: { title: "📲 电话", customInfo: "18888888888" },
+      email: { title: "📮 邮箱", customInfo: "l******y@163.com" }
     }
   },
   {
@@ -209,7 +209,10 @@ const Templage0 = () => {
             </section>
             {basicIntro.map(info => {
               return (
-                <section className="other-basic-info" key={info.key}>
+                <section
+                  className={`other-basic-info ${info.key}`}
+                  key={info.key}
+                >
                   <h4 className="title triangle">{info.title}</h4>
                   <div>
                     {Object.keys(info.content).map(key => {
