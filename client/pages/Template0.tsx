@@ -18,8 +18,7 @@ const basicIntro = [
     key: "contact",
     content: {
       phoneNumber: { title: "📲 电话", customInfo: "188****5610" },
-      email: { title: "📮 邮箱", customInfo: "L*****y@163.com" },
-      wechat: { title: "💚 微信", customInfo: "188****5610" }
+      email: { title: "📮 邮箱", customInfo: "L*****y@163.com" }
     }
   },
   {
@@ -191,7 +190,6 @@ const experienceIntro = [
 ];
 
 const Templage0 = () => {
-  console.log("render");
   return (
     <div className="wrapper">
       <div id="pdf-target">
@@ -207,7 +205,7 @@ const Templage0 = () => {
             <img src={Avatar} />
             <section className="name-info">
               <p contentEditable>Yuqi喵</p>
-              <p contentEditable>Web前端攻城狮</p>
+              <p contentEditable>Web前端工程师</p>
             </section>
             {basicIntro.map(info => {
               return (
