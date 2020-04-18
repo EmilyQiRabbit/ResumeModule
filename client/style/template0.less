@@ -15,7 +15,7 @@ button {
 html,
 body,
 #root {
-  height: 1040px;
+  height: 1075px;
 }
 
 p {
@@ -99,7 +99,7 @@ p {
           color: white;
           text-align: center;
           line-height: 25px;
-          margin: 35px 0 25px;
+          margin: 25px 0;
           position: relative;
           left: -10px;
           letter-spacing: 1px;
@@ -117,9 +117,17 @@ p {
           padding-left: 15px;
           p {
             font-size: 14px;
-            span:first-child {
+            > span:first-child {
               line-height: 2;
               font-weight: bold;
+            }
+            .detail {
+              font-size: 13px;
+              display: inline-block;
+              margin-bottom: 10px;
+              > span {
+                text-decoration: underline;
+              }
             }
             a {
               color: @font-color;
@@ -137,7 +145,7 @@ p {
       section {
         font-size: 14px;
         color: @font-color;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
         .title {
           width: 200px;
           background: @basic-color;
@@ -205,9 +213,15 @@ p {
               color: @font-color;
               font-size: 14px;
               span:first-child {
-                margin: 15px 0;
+                margin: 10px 0;
                 font-weight: bold;
               }
+              span:last-child {
+                line-height: 1.3em;
+              }
+            }
+            &:last-child {
+              margin-bottom: 0px;
             }
           }
         }
