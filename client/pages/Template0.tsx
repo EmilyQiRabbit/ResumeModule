@@ -1,6 +1,6 @@
 import React from "react";
 import "@style/template0.less";
-import Avatar from "@images/avatar.jpeg";
+import Avatar from "@images/avatar1.jpeg";
 // import AddIcon from "@images/add-icon.svg";
 
 const basicIntro = [
@@ -17,8 +17,8 @@ const basicIntro = [
     title: "联系方式",
     key: "contact",
     content: {
-      phoneNumber: { title: "📲 电话", customInfo: "18888888888" },
-      email: { title: "📮 邮箱", customInfo: "l******y@163.com" }
+      phoneNumber: { title: "📲 电话", customInfo: "188********" },
+      email: { title: "📮 邮箱", customInfo: "l*********y@163.com" }
     }
   },
   {

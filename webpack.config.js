@@ -93,7 +93,7 @@ const loadConfig = (options = {}) => {
             loader: "url-loader",
             options: {
               name: "[hash].[ext]",
-              limit: 100000 // 100kb
+              limit: 1000000 // 1000kb
             }
           }
         },
