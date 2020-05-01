@@ -17,8 +17,8 @@ const basicIntro = [
     title: "联系方式",
     key: "contact",
     content: {
-      phoneNumber: { title: "📲 电话", customInfo: "188********" },
-      email: { title: "📮 邮箱", customInfo: "l*********y@163.com" }
+      phoneNumber: { title: "📲 电话", customInfo: "188********" }, // TODO
+      email: { title: "📮 邮箱", customInfo: "L********y@163.com" } // TODO
     }
   },
   {
@@ -33,7 +33,7 @@ const basicIntro = [
             <br />
             <span>熟悉</span>：Webpack，npm，SSR
             <br />
-            <span>了解</span>：NodeJS，Express，KOA
+            <span>了解</span>：NodeJS，Express，koa
           </span>
         )
       },
@@ -84,7 +84,7 @@ const ExperienceList = () => {
         <h3>
           <span contentEditable>2018/5 至今</span>
           <span contentEditable>石墨文档</span>
-          <span contentEditable>Web 前端研发</span>
+          <span contentEditable>Web 前端工程师</span>
         </h3>
         <p contentEditable>
           <span>石墨主站</span>
@@ -106,7 +106,7 @@ const ExperienceList = () => {
         <p contentEditable>
           <span>技术栈：</span>
           <span>
-            ES6，TS，jQuery，React，Redux，npm/yarn，lerna，Webpack，NodeJS，Express，KOA，Git
+            ES6，TS，jQuery，React，Redux，npm/yarn，lerna，Webpack，NodeJS，Express，koa，Git
           </span>
         </p>
       </section>
@@ -115,7 +115,7 @@ const ExperienceList = () => {
         <h3>
           <span contentEditable>2017/6 至 2018/5</span>
           <span contentEditable>贝壳金控</span>
-          <span contentEditable>Web 前端实习</span>
+          <span contentEditable>Web 前端（实习）</span>
         </h3>
         <p contentEditable>
           <span>装修分期系统 & 周报系统：</span>
@@ -139,7 +139,7 @@ const ExperienceList = () => {
         <h3>
           <span contentEditable>2015/9 至 2017/1 </span>
           <span contentEditable>北京宏华兴业科技发展有限公司</span>
-          <span contentEditable>Web 前端实习</span>
+          <span contentEditable>Web 前端（实习）</span>
         </h3>
         <p contentEditable>
           <span>收费业务系统 & 制造执行系统：</span>
@@ -163,10 +163,10 @@ const ExperienceList = () => {
 const AboutContent = () => {
   return (
     <div contentEditable>
-      学习能力强，能够很快学习并应用新知识；
+      能够很快上手并应用新知识；善于利用工具解决问题；乐于体验新鲜事物；
       代码质量较高，乐于积极探索优化方式； 兴趣广泛，不局限于前端，最近在了解
       Rust 和机器学习；
-      不足之处是对项目缺乏更高级别的把控，例如不熟悉部署的环境和原理，或可能忽略某些内在关联而导致项目估时不准等。
+      不足之处是对项目缺乏更高级别的把控，例如不熟悉部署的细节和原理，或可能忽略某些内在关联，而导致对项目工作量估计不准等。
     </div>
   );
 };
@@ -204,6 +204,7 @@ const Templage0 = () => {
           <aside className="aside basic-intro">
             <img src={Avatar} />
             <section className="name-info">
+              {/* TODO */}
               <p contentEditable>Yuqi喵</p>
               <p contentEditable>Web前端工程师</p>
             </section>
