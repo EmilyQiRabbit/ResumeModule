@@ -2,12 +2,16 @@ import Koa from "koa";
 import views from "koa-views";
 import router from "./routes";
 import { ServerRouter } from "./ssr/server";
+import url from "url";
 
 import fs from "fs";
 import https from "https";
 import path from "path";
 
 const app = new Koa();
+
+const a = new url.URL("https://fack.host#hash");
+a.searchParams.append("useragent", "miniprogram");
 
 // 配置模版引擎
 app.use(
