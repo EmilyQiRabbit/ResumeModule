@@ -9,6 +9,8 @@
   - koa-router 配置路由
   - localhost 已配置为 https 服务
   - 支持 ssr + spa 混合模式（搭建 ing）
+  - 测试功能
+    - 基于 canvas 的图片压缩
 
 - 前端部分基于 React + ts，webpack 编译后可被 Node 服务访问
   - 增加 latex 模版支持
@@ -78,4 +80,9 @@ const server = https.createServer(certOptions, app.callback()).listen(443);
 
 ### 2. 直接启动
 
-在控制台运行 `npm run start`，访问地址 https://localhost/resume
+在控制台运行 `npm run start`，
+
+简历模版访问地址：https://localhost/resume/0
+latex 简历访问地址：https://localhost/resume/latex
+
+打印简历地址：https://localhost/print?page=0 or https://localhost/print?page=latex
