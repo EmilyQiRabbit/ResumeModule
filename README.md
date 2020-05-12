@@ -10,7 +10,7 @@
   - localhost 已配置为 https 服务
   - 支持 ssr + spa 混合模式（搭建 ing）
   - 测试功能
-    - 基于 canvas 的图片压缩
+    - 基于 canvas 的图片压缩（未开始）
 
 - 前端部分基于 React + ts，webpack 编译后可被 Node 服务访问
   - 增加 latex 模版支持
