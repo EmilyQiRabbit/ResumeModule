@@ -14,6 +14,7 @@
 
 - 前端部分基于 React + ts，webpack 编译后可被 Node 服务访问
   - 增加 latex 模版支持
+  - 使用 page-skeleton-webpack-plugin 支持骨架图
 
 ## 开发说明
 
@@ -70,9 +71,10 @@ openssl x509 -req -in server.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateseria
 使用代码：
 
 ```ts
+// 本项目的证书相关代码都放在 .certification 中，并设置了 gitignore，没有上传
 const certOptions = {
-  key: fs.readFileSync(path.resolve("./server.key")),
-  cert: fs.readFileSync(path.resolve("./server.crt"))
+  key: fs.readFileSync(path.resolve("./.certification/server.key")),
+  cert: fs.readFileSync(path.resolve("./.certification/server.crt"))
 };
 
 const server = https.createServer(certOptions, app.callback()).listen(443);

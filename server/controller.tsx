@@ -5,7 +5,7 @@ import { htmlTemplate } from "./utils";
 import { ServerRouter } from "./ssr/server";
 
 export const resumePage = (ctx: Context, _next: Function) => {
-  return ctx.render("./layout");
+  return ctx.render(`../dist/client/index`);
 };
 // 加载静态资源文件
 export const staticFile = async (ctx: Context, _next: Function) => {

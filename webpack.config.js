@@ -1,6 +1,8 @@
 const path = require("path");
 const webpack = require("webpack");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { SkeletonPlugin } = require("page-skeleton-webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const OPT_PREFIX = {
@@ -62,7 +64,7 @@ const LOADER_TS = [
 const loadConfig = (options = {}) => {
   const webpackConfig = {
     devtool: "source-map", // 生成 source-map 文件
-    mode: "production",
+    mode: "development",
     resolve: {
       // Configure how modules are resolved.
       extensions: [".ts", ".tsx", ".mjs", ".js", ".jsx", ".json"],
@@ -173,6 +175,14 @@ const loadConfig = (options = {}) => {
             configFile: ".eslintrc.js"
           }
         }
+      }),
+      new HtmlWebpackPlugin({
+        template: "./server/layout.html"
+      }),
+      new SkeletonPlugin({
+        pathname: path.resolve(__dirname, `./shell`), // the path to store shell file
+        staticDir: path.resolve(__dirname, path.join(__dirname, "dist/client")), // the same as the `output.path`
+        routes: ["/resume/0"] // Which routes you want to generate skeleton screen
       })
       // new BundleAnalyzerPlugin()
     ]

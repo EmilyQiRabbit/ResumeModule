@@ -14,7 +14,15 @@
     "moduleResolution": "node",
     "target": "es5",
     "lib": ["es2015", "dom"],
-    "noEmitOnError": true
+    "noEmitOnError": true,
+    "baseUrl": ".",
+    "paths": {
+      "@pages/*": ["client/pages/*"],
+      "@components/*": ["client/components/*"],
+      "@style/*": ["client/style/*"],
+      "@images/*": ["client/images/*"]
+      // ...按照 webpack alias 补充配置
+    }
   },
-  "include": ["server/*", "server/ssr/server.tsx"]
+  "include": ["server/*", "server/ssr/server.tsx", "client/*", "client/*/*"]
 }

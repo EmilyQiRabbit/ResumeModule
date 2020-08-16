@@ -14,22 +14,23 @@ const Template0: any = Loadable({
   }
 });
 
-const TemplateLatex: any = Loadable({
-  loader: () =>
-    import(
-      /* webpackChunkName: 'latextemplate' */
-      "@pages/LatexTemplate"
-    ),
-  loading: function() {
-    return null;
-  }
-});
+// 加入 latex 会导致报错「 Can't resolve './documentclasses'...」，先去掉吧。
+// const TemplateLatex: any = Loadable({
+//   loader: () =>
+//     import(
+//       /* webpackChunkName: 'latextemplate' */
+//       "@pages/LatexTemplate"
+//     ),
+//   loading: function() {
+//     return null;
+//   }
+// });
 
 const App = () => {
   return (
     <BrowserRouter>
       <Route path="/resume/0" component={Template0} />
-      <Route path="/resume/latex" component={TemplateLatex} />
+      {/* <Route path="/resume/latex" component={TemplateLatex} /> */}
     </BrowserRouter>
   );
 };

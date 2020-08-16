@@ -16,8 +16,8 @@ a.searchParams.append("useragent", "miniprogram");
 // 配置模版引擎
 app.use(
   views(__dirname, {
-    extension: "hbs",
-    map: { hbs: "handlebars" },
+    extension: "html",
+    map: { html: "nunjucks" },
     options: {
       scriptSrc: "main.bundle.js"
     }
