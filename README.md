@@ -14,7 +14,7 @@
 
 - 前端部分基于 React + ts，webpack 编译后可被 Node 服务访问
   - 增加 latex 模版支持
-  - 使用 page-skeleton-webpack-plugin 支持骨架图
+  - 使用 [page-skeleton-webpack-plugin](https://github.com/ElemeFE/page-skeleton-webpack-plugin) 支持骨架图，
 
 ## 开发说明
 
